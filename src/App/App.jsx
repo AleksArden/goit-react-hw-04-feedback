@@ -11,15 +11,11 @@ export const App = () => {
   const [bad, setBad] = useState(0);
   const dataFeedback = { good, neutral, bad };
 
-  const countTotalFeedback = () => {
-    return Object.values(dataFeedback).reduce(
-      (total, value) => (total += value),
-      0
-    );
-  };
-  const countPositiveFeedbackPercentage = () => {
-    return Math.round((good * 100) / countTotalFeedback());
-  };
+  const countTotalFeedback = () =>
+    Object.values(dataFeedback).reduce((total, value) => (total += value), 0);
+
+  const countPositiveFeedbackPercentage = () =>
+    Math.round((good * 100) / countTotalFeedback());
 
   const handleClick = ({ target: { name } }) => {
     switch (name) {
@@ -50,9 +46,7 @@ export const App = () => {
           <Notification message="There is no feedback" />
         ) : (
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
+            dataFeedback={dataFeedback}
             total={total}
             positivePercentage={positivePercentage}
           />
