@@ -11,8 +11,7 @@ export const App = () => {
   const [bad, setBad] = useState(0);
   const dataFeedback = { good, neutral, bad };
 
-  const countTotalFeedback = () =>
-    Object.values(dataFeedback).reduce((total, value) => (total += value), 0);
+  const countTotalFeedback = () => good + neutral + bad;
 
   const countPositiveFeedbackPercentage = () =>
     Math.round((good * 100) / countTotalFeedback());
